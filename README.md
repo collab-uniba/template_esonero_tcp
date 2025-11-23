@@ -138,6 +138,8 @@ Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche 
 
 3. **Aggiungere file allo staging area**
 
+   La staging area (area di preparazione) è uno spazio intermedio dove si selezionano le modifiche da includere nel prossimo commit.
+
    Per aggiungere **tutti** i file modificati e i nuovi file:
    ```bash
    git add .
