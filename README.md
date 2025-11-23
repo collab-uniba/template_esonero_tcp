@@ -109,6 +109,106 @@ Gli studenti devono:
    - **Client**: creazione socket, connessione al server, invio/ricezione dati
    - **Server**: creazione socket, bind, listen, accept, gestione client
 
+## Salvare e Caricare le Modifiche su GitHub
+
+Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche sul repository GitHub utilizzando Git da riga di comando.
+
+### Workflow Git Completo
+
+1. **Verificare lo stato del repository**
+
+   Prima di tutto, aprire un terminale nella directory del progetto e controllare quali file sono stati modificati o creati:
+   ```bash
+   git status
+   ```
+
+   Questo comando mostra:
+   - File modificati (in rosso se non ancora aggiunti)
+   - Nuovi file non tracciati
+   - File pronti per il commit (in verde)
+
+2. **Aggiungere file allo staging area**
+
+   Per aggiungere **tutti** i file modificati e i nuovi file:
+   ```bash
+   git add .
+   ```
+
+   Oppure, per aggiungere **file specifici**:
+   ```bash
+   git add client-project/src/main.c
+   git add server-project/src/main.c
+   git add client-project/src/protocol.h
+   ```
+
+3. **Committare le modifiche**
+
+   Dopo aver aggiunto i file allo staging area, creare un commit con un messaggio descrittivo:
+   ```bash
+   git commit -m "Implementazione logica client-server TCP"
+   ```
+
+   Il messaggio del commit dovrebbe descrivere brevemente le modifiche apportate. Altri esempi:
+   ```bash
+   git commit -m "Aggiunta funzione di gestione connessioni"
+   git commit -m "Implementazione protocollo comunicazione"
+   git commit -m "Fix gestione errori socket"
+   ```
+
+4. **Pushare le modifiche su GitHub**
+
+   Infine, caricare i commit sul repository remoto:
+   ```bash
+   git push
+   ```
+
+   Oppure, se è il primo push sul branch corrente:
+   ```bash
+   git push -u origin main
+   ```
+
+### Esempio Pratico Completo
+
+Ecco un esempio del flusso completo dopo aver modificato i file in Eclipse:
+
+```bash
+# 1. Controllare lo stato
+git status
+
+# 2. Aggiungere tutti i file modificati
+git add .
+
+# 3. Verificare che i file siano nello staging area
+git status
+
+# 4. Creare il commit
+git commit -m "Completamento implementazione client e server"
+
+# 5. Caricare su GitHub
+git push
+```
+
+### Suggerimenti
+
+- **Committare frequentemente**: Non aspettare di completare tutto il progetto. Fate commit incrementali ogni volta che completate una funzionalità o risolvete un problema.
+- **Messaggi descrittivi**: Usate messaggi di commit chiari che descrivano cosa avete fatto, non come lo avete fatto.
+- **Controllare sempre**: Usate `git status` prima e dopo `git add` per verificare quali file state per committare.
+- **Push regolari**: Fate push regolarmente su GitHub per avere un backup del vostro lavoro.
+
+### In Caso di Problemi
+
+Se avete modificato i file sia in Eclipse che altrove e ci sono conflitti:
+```bash
+# Scaricare le ultime modifiche dal repository
+git pull
+
+# Risolvere eventuali conflitti manualmente
+# Poi aggiungere i file risolti e committare
+git add .
+git commit -m "Risoluzione conflitti"
+git push
+```
+
 ## Note Importanti
 
 - Utilizzare le costanti definite in `protocol.h` invece di valori hardcoded
