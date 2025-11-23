@@ -115,9 +115,18 @@ Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche 
 
 ### Workflow Git Completo
 
-1. **Verificare lo stato del repository**
+1. **Sincronizzare con il repository remoto**
 
-   Prima di tutto, aprire un terminale nella directory del progetto e controllare quali file sono stati modificati o creati:
+   Prima di iniziare a lavorare, scaricare eventuali modifiche fatte da altri collaboratori sul repository condiviso:
+   ```bash
+   git pull
+   ```
+
+   Questo comando scarica e integra le modifiche dal repository remoto. È particolarmente importante quando si lavora in coppia o si lavora da computer diversi.
+
+2. **Verificare lo stato del repository**
+
+   Aprire un terminale nella directory del progetto e controllare quali file sono stati modificati o creati:
    ```bash
    git status
    ```
@@ -127,7 +136,7 @@ Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche 
    - Nuovi file non tracciati
    - File pronti per il commit (in verde)
 
-2. **Aggiungere file allo staging area**
+3. **Aggiungere file allo staging area**
 
    Per aggiungere **tutti** i file modificati e i nuovi file:
    ```bash
@@ -141,7 +150,7 @@ Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche 
    git add client-project/src/protocol.h
    ```
 
-3. **Committare le modifiche**
+4. **Committare le modifiche**
 
    Dopo aver aggiunto i file allo staging area, creare un commit con un messaggio descrittivo:
    ```bash
@@ -155,7 +164,7 @@ Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche 
    git commit -m "Fix gestione errori socket"
    ```
 
-4. **Pushare le modifiche su GitHub**
+5. **Pushare le modifiche su GitHub**
 
    Infine, caricare i commit sul repository remoto:
    ```bash
@@ -172,28 +181,32 @@ Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche 
 Ecco un esempio del flusso completo dopo aver modificato i file in Eclipse:
 
 ```bash
-# 1. Controllare lo stato
+# 1. Sincronizzare con il repository remoto
+git pull
+
+# 2. Controllare lo stato
 git status
 
-# 2. Aggiungere tutti i file modificati
+# 3. Aggiungere tutti i file modificati
 git add .
 
-# 3. Verificare che i file siano nello staging area
+# 4. Verificare che i file siano nello staging area
 git status
 
-# 4. Creare il commit
+# 5. Creare il commit
 git commit -m "Completamento implementazione client e server"
 
-# 5. Caricare su GitHub
+# 6. Caricare su GitHub
 git push
 ```
 
 ### Suggerimenti
 
+- **Sincronizzare prima di lavorare**: Fate sempre `git pull` prima di iniziare a modificare i file, specialmente se lavorate in coppia o da computer diversi. Questo evita conflitti.
 - **Committare frequentemente**: Non aspettare di completare tutto il progetto. Fate commit incrementali ogni volta che completate una funzionalità o risolvete un problema.
 - **Messaggi descrittivi**: Usate messaggi di commit chiari che descrivano cosa avete fatto, non come lo avete fatto.
 - **Controllare sempre**: Usate `git status` prima e dopo `git add` per verificare quali file state per committare.
-- **Push regolari**: Fate push regolarmente su GitHub per avere un backup del vostro lavoro.
+- **Push regolari**: Fate push regolarmente su GitHub per avere un backup del vostro lavoro e per condividere le modifiche con il vostro compagno di coppia.
 
 ### In Caso di Problemi
 
