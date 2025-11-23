@@ -109,6 +109,10 @@ Gli studenti devono:
    - **Client**: creazione socket, connessione al server, invio/ricezione dati
    - **Server**: creazione socket, bind, listen, accept, gestione client
 
+### Note
+
+- Utilizzare le costanti definite in `protocol.h` invece di valori hardcoded
+
 ## Salvare e Caricare le Modifiche su GitHub
 
 Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche sul repository GitHub utilizzando Git da riga di comando.
@@ -223,10 +227,6 @@ git add .
 git commit -m "Risoluzione conflitti"
 git push
 ```
-
-## Note Importanti
-
-- Utilizzare le costanti definite in `protocol.h` invece di valori hardcoded
 
 ## Licenza
 
