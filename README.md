@@ -1,4 +1,4 @@
-# Template Esonero TCP - Corso di Reti di Calcolatori - ITPS A-L
+# Template Esonero TCP - Corso di Reti di Calcolatori - ITPS A-K
 
 Template repository per l'assegnazione della prima prova di esonero: client-server TCP.
 
