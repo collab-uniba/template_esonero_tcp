@@ -65,8 +65,6 @@ int main(int argc, char *argv[]) {
 	// TODO: Close socket
 	// closesocket(my_socket);
 
-	printf("Client terminated.\n");
-
 	clearwinsock();
 	return 0;
 } // main end

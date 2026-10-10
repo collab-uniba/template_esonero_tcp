@@ -5,7 +5,7 @@ Template repository per l'assegnazione della prima prova di esonero: client-serv
 
 ## Descrizione
 
-Questo repository contiene la struttura base per lo sviluppo di un'applicazione client-server TCP in linguaggio C, utilizzando la libreria standard delle socket. Il codice è progettato per essere portabile su sistemi operativi **Windows**, **Linux** e **macOS**.
+Questo repository contiene la struttura base per lo sviluppo di un'applicazione client-server TCP in linguaggio C, utilizzando l'API socket (BSD socket su Linux e macOS, Winsock su Windows). Il codice è progettato per essere portabile su sistemi operativi **Windows**, **Linux** e **macOS**.
 
 ## Struttura del Repository
 
@@ -33,10 +33,8 @@ Il repository è organizzato in due progetti Eclipse CDT separati:
 ### 1. Creare la propria copia del repository
 
 1. Cliccare su "Use this template" in alto a destra su GitHub
-2. Creare un nuovo repository personale
-   - Rinominate il repository sostituendo la parola _template_ con il vostro _cognome_ seguito dalla _matricola_ (`template_esonero_tcp` -> `cognome_12345_esonero_tcp`)
-   - Se l'esonero è svolto in coppia, il nome del repository sarà `cognome1_12345_cognome2_6789_esonero_tcp`
-4. Clonare il repository sul proprio computer:
+2. Creare un nuovo repository personale (nome a scelta) con visibilità _Public_
+3. Clonare il repository sul proprio computer:
    ```bash
    git clone <url-del-tuo-repository>
    ```
@@ -45,26 +43,27 @@ Il repository è organizzato in due progetti Eclipse CDT separati:
 
 1. Aprire **Eclipse CDT**
 2. Selezionare `File → Import → General → Existing Projects into Workspace`
-3. Selezionare la directory `client-project`
-4. Ripetere i passi 2-3 per `server-project`
+3. In **Select root directory** scegliere la cartella del repository clonato: compaiono `client-project` e `server-project`, selezionarli entrambi
+4. Lasciare **deselezionata** l'opzione **Copy projects into workspace**, altrimenti le modifiche non finiscono nel repository Git
+5. Cliccare `Finish`
 
 ### 3. Configurare il progetto in Eclipse
 
 Dopo aver importato i progetti, è necessario verificare e configurare le impostazioni del compilatore:
 
-#### Verificare il Toolchain
+#### Verificare la toolchain
 Per ciascun progetto (client e server):
 1. Click destro sul progetto → `Properties`
 2. Andare in `C/C++ Build → Tool Chain Editor`
 3. Verificare che il **Current toolchain** sia corretto per il proprio sistema operativo:
-   - **Linux**: GCC
-   - **macOS**: GCC
-   - **Windows**: MinGW GCC (Assicurarsi di avere già installato MinGW o MinGW-w64)
+   - **Linux**: Linux GCC
+   - **macOS**: MacOSX GCC (richiede gli Xcode Command Line Tools: `xcode-select --install`)
+   - **Windows**: MinGW GCC (richiede MinGW-w64 già installato)
 
 #### Solo per Windows: Aggiungere libreria Winsock
-Per compilare su Windows, è necessario linkare la libreria Winsock:
+Per compilare su Windows, è necessario linkare la libreria Winsock. Per ciascun progetto (client e server):
 1. Click destro sul progetto → `Properties`
-2. Andare in `C/C++ Build → Settings`
+2. Andare in `C/C++ Build → Settings` e, in alto, scegliere **Configuration: [All configurations]**
 3. Selezionare `MinGW C Linker → Libraries`
 4. In **Libraries (-l)**, cliccare su `Add` e inserire: `wsock32`
 5. Applicare le modifiche e cliccare `OK`
@@ -91,6 +90,15 @@ Contiene:
 - **Codice boilerplate** per la portabilità cross-platform
 - **Inizializzazione Winsock** su Windows
 - **Sezioni TODO** dove implementare la logica dell'applicazione
+- Solo nel server: la disabilitazione del buffering di `stdout` (`setvbuf`), che garantisce la stampa immediata del log; non rimuoverla
+
+### Eseguire client e server con argomenti
+Per passare gli argomenti da riga di comando all'interno di Eclipse:
+1. `Run → Run Configurations…`
+2. Selezionare la configurazione del progetto sotto **C/C++ Application**
+3. Nella scheda **Arguments**, inserire gli argomenti in **Program arguments** e cliccare `Run`
+
+In alternativa, eseguire il file compilato da terminale (si trova nella cartella `Debug/` del progetto).
 
 ## Implementazione dell'Assegnazione
 
@@ -115,7 +123,7 @@ Gli studenti devono:
 
 ## Salvare e Caricare le Modifiche su GitHub
 
-Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche sul repository GitHub utilizzando Git da riga di comando.
+Durante lo sviluppo in Eclipse, salvate regolarmente le modifiche sul repository GitHub utilizzando Git da riga di comando.
 
 ### Workflow Git Completo
 
@@ -140,7 +148,7 @@ Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche 
    - Nuovi file non tracciati
    - File pronti per il commit (in verde)
 
-3. **Aggiungere file allo staging area**
+3. **Aggiungere file alla staging area**
 
    La staging area (area di preparazione) è uno spazio intermedio dove si selezionano le modifiche da includere nel prossimo commit.
 
@@ -158,7 +166,7 @@ Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche 
 
 4. **Committare le modifiche**
 
-   Dopo aver aggiunto i file allo staging area, creare un commit con un messaggio descrittivo:
+   Dopo aver aggiunto i file alla staging area, creare un commit con un messaggio descrittivo:
    ```bash
    git commit -m "Implementazione logica client-server TCP"
    ```
@@ -177,11 +185,6 @@ Dopo aver completato lo sviluppo in Eclipse, è necessario salvare le modifiche 
    git push
    ```
 
-   Oppure, se è il primo push sul branch corrente:
-   ```bash
-   git push -u origin main
-   ```
-
 ### Esempio Pratico Completo
 
 Ecco un esempio del flusso completo dopo aver modificato i file in Eclipse:
@@ -196,7 +199,7 @@ git status
 # 3. Aggiungere tutti i file modificati
 git add .
 
-# 4. Verificare che i file siano nello staging area
+# 4. Verificare che i file siano nella staging area
 git status
 
 # 5. Creare il commit
@@ -208,15 +211,15 @@ git push
 
 ### Suggerimenti
 
-- **Sincronizzare prima di lavorare**: Fate sempre `git pull` prima di iniziare a modificare i file, specialmente se lavorate in coppia o da computer diversi. Questo evita conflitti.
-- **Committare frequentemente**: Non aspettare di completare tutto il progetto. Fate commit incrementali ogni volta che completate una funzionalità o risolvete un problema.
+- **Sincronizzare prima di lavorare**: Fate sempre `git pull` prima di iniziare a modificare i file, specialmente se lavorate in coppia o da computer diversi. Questo riduce il rischio di conflitti.
+- **Committare frequentemente**: Non aspettate di completare tutto il progetto. Fate commit incrementali ogni volta che completate una funzionalità o risolvete un problema.
 - **Messaggi descrittivi**: Usate messaggi di commit chiari che descrivano cosa avete fatto, non come lo avete fatto.
 - **Controllare sempre**: Usate `git status` prima e dopo `git add` per verificare quali file state per committare.
 - **Push regolari**: Fate push regolarmente su GitHub per avere un backup del vostro lavoro e per condividere le modifiche con il vostro compagno di coppia.
 
 ### In Caso di Problemi
 
-Se avete modificato i file sia in Eclipse che altrove e ci sono conflitti:
+Se `git push` viene rifiutato perché il repository remoto contiene modifiche che non avete in locale (ad es. del compagno di coppia):
 ```bash
 # Scaricare le ultime modifiche dal repository
 git pull

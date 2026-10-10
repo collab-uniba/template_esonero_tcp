@@ -34,6 +34,9 @@ void clearwinsock() {
 
 int main(int argc, char *argv[]) {
 
+	// Disable stdout buffering so that log lines are printed immediately
+	setvbuf(stdout, NULL, _IONBF, 0);
+
 	// TODO: Implement server logic
 
 #if defined WIN32
