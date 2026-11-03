@@ -47,27 +47,15 @@ Il repository è organizzato in due progetti Eclipse CDT separati:
 4. Lasciare **deselezionata** l'opzione **Copy projects into workspace**, altrimenti le modifiche non finiscono nel repository Git
 5. Cliccare `Finish`
 
-### 3. Configurare il progetto in Eclipse
+### 3. Scegliere la configurazione di build
 
-Dopo aver importato i progetti, è necessario verificare e configurare le impostazioni del compilatore:
+I progetti contengono tre configurazioni già pronte, una per sistema operativo: **Debug-Linux**, **Debug-macOS** e **Debug-Windows** (quest'ultima linka già la libreria Winsock `ws2_32`). Per ciascun progetto (client e server):
+1. Click destro sul progetto → `Build Configurations → Set Active`
+2. Scegliere la configurazione del proprio sistema operativo
 
-#### Verificare la toolchain
-Per ciascun progetto (client e server):
-1. Click destro sul progetto → `Properties`
-2. Andare in `C/C++ Build → Tool Chain Editor`
-3. Verificare che il **Current toolchain** sia corretto per il proprio sistema operativo:
-   - **Linux**: Linux GCC
-   - **macOS**: MacOSX GCC (richiede gli Xcode Command Line Tools: `xcode-select --install`)
-   - **Windows**: MinGW GCC (richiede MinGW-w64 già installato)
-
-#### Solo per Windows: Aggiungere libreria Winsock
-Per compilare su Windows, è necessario linkare la libreria Winsock. Per ciascun progetto (client e server):
-1. Click destro sul progetto → `Properties`
-2. Andare in `C/C++ Build → Settings` e, in alto, scegliere **Configuration: [All configurations]**
-3. Selezionare `MinGW C Linker → Libraries`
-4. In **Libraries (-l)**, cliccare su `Add` e inserire: `ws2_32`
-5. Applicare le modifiche e cliccare `OK`
-
+La scelta è salvata nel workspace di Eclipse, non nel repository: in una coppia ciascuno usa la propria configurazione senza modificare file versionati. Prerequisiti del compilatore:
+- **macOS**: Xcode Command Line Tools (`xcode-select --install`)
+- **Windows**: MinGW-w64 installato
 
 ## File Principali
 
@@ -93,7 +81,7 @@ Contiene:
 - Solo nel server: la disabilitazione del buffering di `stdout` (`setvbuf`), che garantisce la stampa immediata del log; non rimuoverla
 
 ### Eseguire client e server da terminale
-Eclipse compila gli eseguibili nella cartella `Debug/` di ciascun progetto (compare dopo il primo build). Per aprire un terminale direttamente in quella cartella: in **Project Explorer**, click destro sulla cartella `Debug` del progetto → `Show in Local Terminal → Terminal`.
+Eclipse compila gli eseguibili nella cartella della configurazione attiva di ciascun progetto, ad esempio `Debug-macOS/` (compare dopo il primo build). Per aprire un terminale direttamente in quella cartella: in **Project Explorer**, click destro su quella cartella → `Show in Local Terminal → Terminal`.
 
 Ripetere per l'altro progetto, in modo da avere un terminale per il server e uno per il client. Avviare prima il server, poi il client con gli argomenti previsti dall'assegnazione:
 

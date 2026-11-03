@@ -57,6 +57,7 @@ dkms.conf
 # Eclipse CDT
 .settings/
 Debug/
+Debug-*/
 Release/
 
 # macOS files
