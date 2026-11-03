@@ -93,18 +93,22 @@ Contiene:
 - Solo nel server: la disabilitazione del buffering di `stdout` (`setvbuf`), che garantisce la stampa immediata del log; non rimuoverla
 
 ### Eseguire client e server da terminale
-Eclipse compila gli eseguibili nella cartella `Debug/` di ciascun progetto. Aprire due terminali nella cartella del repository clonato, uno per il server e uno per il client.
+Eclipse compila gli eseguibili nella cartella `Debug/` di ciascun progetto. Per aprire un terminale direttamente in quella cartella:
+1. In **Project Explorer**, espandere il progetto e poi **Binaries**
+2. Click destro sull'eseguibile → `Show in Local Terminal → Terminal`
+
+Ripetere per l'altro progetto, in modo da avere un terminale per il server e uno per il client. Avviare prima il server, poi il client con gli argomenti previsti dall'assegnazione:
 
 **Linux e macOS**
 ```bash
-./server-project/Debug/server-project
-./client-project/Debug/client-project <argomenti>
+./server-project
+./client-project <argomenti>
 ```
 
-**Windows** (Prompt dei comandi o PowerShell)
+**Windows**
 ```
-server-project\Debug\server-project.exe
-client-project\Debug\client-project.exe <argomenti>
+.\server-project.exe
+.\client-project.exe <argomenti>
 ```
 
 Il server resta in esecuzione finché non viene interrotto con `Ctrl+C`.
