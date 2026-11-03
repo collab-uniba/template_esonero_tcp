@@ -162,6 +162,8 @@ git config --global pull.rebase false
 
    Questo comando scarica e integra le modifiche dal repository remoto. È particolarmente importante quando si lavora in coppia o si lavora da computer diversi.
 
+   `git pull` va eseguito senza modifiche non ancora committate. Se avete già modificato dei file, fate prima `git add` e `git commit` (passi 3 e 4) e solo dopo `git pull`: altrimenti Git si rifiuta di aggiornare i file che avete toccato ("Your local changes … would be overwritten by merge").
+
 2. **Verificare lo stato del repository**
 
    Aprire un terminale nella directory del progetto e controllare quali file sono stati modificati o creati:
