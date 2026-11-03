@@ -147,9 +147,9 @@ git config --global user.email "email"
 git config --global pull.rebase false
 ```
 
-**Credenziali**: il repository è privato, quindi `git clone` e `git push` chiedono di autenticarsi. GitHub non accetta la password dell'account:
-- **Windows**: Git for Windows include Git Credential Manager, che apre il browser per il login
-- **macOS e Linux**: creare un [Personal Access Token](https://github.com/settings/tokens) (classic, con scope `repo`) e incollarlo quando Git chiede la password, oppure installare [Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager)
+**Credenziali**: il repository è privato, quindi `git clone` e `git push` chiedono di autenticarsi. GitHub non accetta la password dell'account. Due alternative, valide su tutti i sistemi:
+- **Git Credential Manager**: apre il browser per il login a GitHub e memorizza le credenziali. Su Windows è già incluso in [Git for Windows](https://gitforwindows.org/); su macOS e Linux va [installato](https://github.com/git-ecosystem/git-credential-manager).
+- **Personal Access Token**: crearlo su [GitHub](https://github.com/settings/tokens) (classic, con scope `repo`) e incollarlo al posto della password quando Git la chiede. Su Windows e macOS viene memorizzato al primo uso; su Linux, per non reinserirlo a ogni comando, eseguire `git config --global credential.helper store`.
 
 ### Workflow Git Completo
 
