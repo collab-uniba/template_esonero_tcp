@@ -138,6 +138,19 @@ Gli studenti devono:
 
 Durante lo sviluppo in Eclipse, salvate regolarmente le modifiche sul repository GitHub utilizzando Git da riga di comando.
 
+### Configurazione iniziale di Git (una volta sola)
+
+Senza nome ed email Git rifiuta il primo commit. Senza la strategia di merge, `git pull` si ferma con l'errore "Need to specify how to reconcile divergent branches" quando il repository contiene commit del compagno di coppia che non avete in locale.
+```bash
+git config --global user.name "Nome Cognome"
+git config --global user.email "email"
+git config --global pull.rebase false
+```
+
+**Credenziali**: il repository è privato, quindi `git clone` e `git push` chiedono di autenticarsi. GitHub non accetta la password dell'account:
+- **Windows**: Git for Windows include Git Credential Manager, che apre il browser per il login
+- **macOS e Linux**: creare un [Personal Access Token](https://github.com/settings/tokens) (classic, con scope `repo`) e incollarlo quando Git chiede la password, oppure installare [Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager)
+
 ### Workflow Git Completo
 
 1. **Sincronizzare con il repository remoto**
@@ -243,6 +256,8 @@ git add .
 git commit -m "Risoluzione conflitti"
 git push
 ```
+
+Se dopo `git pull` si apre un editor con il messaggio "Merge branch 'main' …", il merge è andato a buon fine e va solo confermato: in vim scrivere `:wq` e premere Invio; in nano premere `Ctrl+O`, Invio, `Ctrl+X`.
 
 ## Licenza
 
