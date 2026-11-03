@@ -93,9 +93,7 @@ Contiene:
 - Solo nel server: la disabilitazione del buffering di `stdout` (`setvbuf`), che garantisce la stampa immediata del log; non rimuoverla
 
 ### Eseguire client e server da terminale
-Eclipse compila gli eseguibili nella cartella `Debug/` di ciascun progetto. Per aprire un terminale direttamente in quella cartella:
-1. In **Project Explorer**, espandere il progetto e poi **Binaries**
-2. Click destro sull'eseguibile → `Show in Local Terminal → Terminal`
+Eclipse compila gli eseguibili nella cartella `Debug/` di ciascun progetto (compare dopo il primo build). Per aprire un terminale direttamente in quella cartella: in **Project Explorer**, click destro sulla cartella `Debug` del progetto → `Show in Local Terminal → Terminal`.
 
 Ripetere per l'altro progetto, in modo da avere un terminale per il server e uno per il client. Avviare prima il server, poi il client con gli argomenti previsti dall'assegnazione:
 
