@@ -92,13 +92,22 @@ Contiene:
 - **Sezioni TODO** dove implementare la logica dell'applicazione
 - Solo nel server: la disabilitazione del buffering di `stdout` (`setvbuf`), che garantisce la stampa immediata del log; non rimuoverla
 
-### Eseguire client e server con argomenti
-Per passare gli argomenti da riga di comando all'interno di Eclipse:
-1. `Run → Run Configurations…`
-2. Selezionare la configurazione del progetto sotto **C/C++ Application**
-3. Nella scheda **Arguments**, inserire gli argomenti in **Program arguments** e cliccare `Run`
+### Eseguire client e server da terminale
+Eclipse compila gli eseguibili nella cartella `Debug/` di ciascun progetto. Aprire due terminali nella cartella del repository clonato, uno per il server e uno per il client.
 
-In alternativa, eseguire il file compilato da terminale (si trova nella cartella `Debug/` del progetto).
+**Linux e macOS**
+```bash
+./server-project/Debug/server-project
+./client-project/Debug/client-project <argomenti>
+```
+
+**Windows** (Prompt dei comandi o PowerShell)
+```
+server-project\Debug\server-project.exe
+client-project\Debug\client-project.exe <argomenti>
+```
+
+Il server resta in esecuzione finché non viene interrotto con `Ctrl+C`.
 
 ## Implementazione dell'Assegnazione
 
