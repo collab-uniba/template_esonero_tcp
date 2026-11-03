@@ -65,7 +65,7 @@ Per compilare su Windows, è necessario linkare la libreria Winsock. Per ciascun
 1. Click destro sul progetto → `Properties`
 2. Andare in `C/C++ Build → Settings` e, in alto, scegliere **Configuration: [All configurations]**
 3. Selezionare `MinGW C Linker → Libraries`
-4. In **Libraries (-l)**, cliccare su `Add` e inserire: `wsock32`
+4. In **Libraries (-l)**, cliccare su `Add` e inserire: `ws2_32`
 5. Applicare le modifiche e cliccare `OK`
 
 
