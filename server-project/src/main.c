@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
 	// struct sockaddr_in server_addr;
 	// server_addr.sin_family = AF_INET;
 	// server_addr.sin_port = htons(SERVER_PORT);
-	// server_addr.sin_addr.s_addr = htonl(INADDR_ANY);  // 0.0.0.0: accetta connessioni su ogni interfaccia (anche 127.0.0.1)
+	// server_addr.sin_addr.s_addr = htonl(INADDR_ANY);  // 0.0.0.0: accept connections on any interface (127.0.0.1 included)
 
 	// TODO: Bind socket
 	// bind(...);
